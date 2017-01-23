@@ -1,0 +1,149 @@
+<html ng-app="aknApp" ng-controller="aknController">
+
+	<head>
+		<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
+	 	<link rel="stylesheet" href="app/css/main.css"/>
+	 	<script src="node_modules/angular/angular.js"></script>
+	 	<script src="node_modules/validator/validator.min.js"></script>
+	 	<script src="app/app.js"></script>
+	 	<script src="node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js"></script>
+
+ 	</head>
+
+
+ 	<body>
+
+ 		<!--Header-->
+ 			<header>
+			 	<div class="row">
+				 	<div class="col-md-12" id="header">
+				 		<img src="app/imgs/logo_akn.png" class="img-responsive center-block" id="logo"/>
+				 	</div>
+				</div>
+
+			 	<div class="row">
+				 	<ul class="nav nav-pills nav-justified text-center">
+						<li>Home</li>
+						<li>Catálogo</li>
+						<li>Parceiros</li>
+						<li>Trabalhe conosco</li>
+						<li class="selected">Contato</li>
+					</ul>
+				</div>
+			</header>
+		<!-- -->
+
+		<!--input nome-->
+			<div class="row">
+				<div class="form-group col-xs-10 col-md-4 col-md-offset-4 col-xs-offset-1 text-center">
+					<br><br><br>
+				 	<label for="name">Nome:</label>
+					<input type="text" class="form-control" ng-model="clientName">
+				</div>
+			</div>
+		<!-- -->
+
+		<!--input email-->
+			<div class="row">
+				<div class="form-group col-xs-10 col-md-4 col-md-offset-4 col-xs-offset-1 text-center">
+				<br>
+				 	<label for="email">Email:</label>
+					<input type="email" class="form-control" ng-model="clientEmail">
+				</div>
+			</div>
+		<!-- -->
+
+		<!--input CPF-->
+			<div class="row">
+				<div class="form-group col-xs-10 col-md-4 col-md-offset-4 col-xs-offset-1 text-center">
+				<br>
+				 	<label for="cpf">CPF:</label>
+					<input type="text" class="form-control" name="field" ng-model="clientCPF" ui-br-cpf-mask>
+				</div>
+			</div>
+		<!-- -->
+
+		<!--input motivo-->
+			<div class="row">
+				<div class="form-group col-xs-10 col-md-4 col-md-offset-4 col-xs-offset-1 text-center">
+					<br>
+					<label for="motivo">Motivo:</label>
+					<select class="form-control" id="sel1" ng-change="formOption()" ng-model="userOption">
+					    <option ng-repeat="$index in options">{{options[$index]}}</option>
+				  	</select>
+				</div>
+			</div>
+		<!-- -->
+
+		<!--input data de vencimento-->
+			<div class="row" style="display: none" id="dateField">
+				<div class="form-group col-xs-10 col-md-2 col-md-offset-5 col-xs-offset-1 text-center">
+				<br>
+				 	<label for="date">Vencimento:</label>
+					<input type="text" class="form-control" placeholder="dd/mm/aaaa" ng-model="vencimento" ng-change="parseDate()">
+				</div>
+			</div>
+		<!-- -->
+
+		<!--informacoes do boleto-->
+			<div class="row">
+				<div class="alert alert-success col-xs-10 col-md-6 col-md-offset-3 col-xs-offset-1 text-center" style="display: none" id="messageBox2">
+		  			{{boletoMessage}}
+				</div>
+			</div>
+		<!-- -->
+
+		<!--input para mensagem-->
+			<div class="row">
+				<div class="form-group col-xs-12 col-md-8 col-md-offset-2 text-center">
+					<br>
+					<label>Mensagem: </label>
+					<br>
+					<textarea class=”form-control” ng-model="userMessage"></textarea>
+				</div>
+			</div>
+		<!-- -->
+
+		<!--botao de envio-->
+			<div class="row">
+				<div class="text-center">
+					<button class="btn btn-success" ng-click="enviarRegistro()">Enviar</button>
+					<br><br>
+				</div>
+			</div>
+		<!-- -->
+
+		<!--Alerts para o usuario-->
+			<div class="row">
+				<div class="alert alert-danger col-xs-10 col-md-6 col-md-offset-3 col-xs-offset-1 text-center" style="display: none" id="messageBox">
+		  			{{message}}
+				</div>
+			</div>
+		<!-- -->
+
+		<!--footer-->
+			<footer class="text-center">
+	        	<div class="footer-above">
+					<div class="row">
+						<div class="container-fluid" id="footer">
+							<div class="footer-col col-xs-12 col-md-6">
+		                        <h3><b>LOCALIZAÇÃO</b></h3>
+		                        <p>AKN CORPORATION GROUP</p>
+		                        <p>Lorem ipsum dolor, sit amet - nº 0000</p>
+		                        <p>Nulla dapibus lectus mauris</p>
+							</div>
+
+							<div class="footer-col col-xs-12 col-md-6">
+		                        <h3 id="mediaH3"><b>MÍDIAS SOCIAIS</b></h3>
+		                        <a target="_blank" href="#"><img id="fbLogo" src="https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview.png" width="100" height="100"></a>
+		                        <a target="_blank" href="#"><img id="twitterLogo" src="http://cgda.nic.in/img/tw.png" width="75" height="75"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		<!-- -->
+
+ 	</body>
+
+</html>

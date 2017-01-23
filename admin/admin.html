@@ -1,0 +1,165 @@
+<html ng-app="aknApp" ng-controller="adminController">
+
+	<head>
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css"/>
+		<link rel="stylesheet" href="../app/css/main.css"/>
+		<script src="../node_modules/angular/angular.js"></script>
+		<script src="admin.js"></script>
+ 	</head>
+
+
+ 	<body>
+ 		<div class="container-fluid">
+
+ 			<!--Header-->
+			 	<div class="row">
+				 	<div class="col-md-12" id="header">
+				 		<img src="../app/imgs/logo_akn.png" class="img-responsive center-block" id="logo"/>
+				 	</div>
+				</div>
+				<div class="row">
+				 	<div class="container-fluid text-center" id="adminHeader">
+				 		Seção de administrador
+				 	</div>
+				</div>
+			<!-- -->
+
+
+
+			<!--Campo para nome do admin-->
+				<div class="row" id="nameLogin">
+					<div class="form-group col-xs-10 col-md-4 col-md-offset-4 col-xs-offset-1 text-center">
+						<br><br><br>
+					 	<label for="admin">Administrador:</label>
+						<input type="text" class="form-control" ng-model="admin.name" required/>
+					</div>
+				</div>
+			<!---->
+
+
+
+			<!--Campo para password-->
+				<div class="row" id="pswdLogin">
+					<div class="form-group col-xs-10 col-md-4 col-md-offset-4 col-xs-offset-1 text-center">
+					<br>
+					 	<label for="senha">Senha:</label>
+						<input type="password" class="form-control" ng-model="admin.password" required/>
+						<br><br>
+						<button class="btn btn-success" type="submit" ng-click="loginFunc()">
+							Login <i class="glyphicon glyphicon-log-in"></i>
+						</button>
+					</div>
+				</div>
+			<!-- -->
+
+
+
+			<!--Alerts para o admin-->
+			<div class="row">
+				<br><br>
+				<div class="alert alert-danger col-xs-10 col-md-6 col-md-offset-3 col-xs-offset-1 text-center" style="display: none" id="messageBox">
+		  			{{message}}
+				</div>
+			</div>
+			<!-- -->
+
+
+
+			<!--CRUD table-->
+				<div class="row" id="crudTable" style="display: none">
+					<div class="col-xs-12 col-md-8 col-md-offset-2">
+						<br><br><br>
+						<table class="table table-striped">
+						    <thead>
+						      <tr>
+						        <th class="col-md-1">#</th>
+						        <th>Motivo</th>
+						        <th>Ações</th>
+						      </tr>
+						    </thead>
+						    <tbody>
+						      	<tr ng-repeat="$index in options">
+							        <td>{{$index}}</td>
+							        <td>{{options[$index]}}</td>
+							        <td>
+							        	<button class="btn btn-danger" title="remover" ng-click="acaoAdmin($index,'remover')">
+							        		<i class="glyphicon glyphicon-trash"></i>
+							        	</button>
+							        	<button class="btn btn-success" title="novo motivo" ng-click="acaoAdmin($index,'adicionar')">
+							        		<i class="glyphicon glyphicon-plus-sign"></i>
+							        	</button>
+							        	<button class="btn btn-primary" title="ver registros" ng-click="exibirRegistros($index)">
+							        		<i class="glyphicon glyphicon-eye-open"></i>
+							        	</button>
+							        </td>
+						      	</tr>
+						    </tbody>
+						</table>
+					</div>
+				</div>
+			<!-- -->
+
+
+
+			<!-- container para exibir registros de motivos de contato -->
+				<div class="row">
+					<div class="col-xs-12 col-md-8 col-md-offset-2 pre-scrollable" id="scrollDiv" style="display: none">
+						<p>
+							{{registros}}
+						</p>
+					</div>
+					<br><br>
+				</div>
+			<!-- -->
+
+
+
+			<!--Modal-->
+				<div id="myModal" class="modal">
+
+				  	<!--Modal content-->
+					  	<div class="modal-content text-center">
+					    	<span class="close">&times;</span>
+						    <br><br>
+						    <p>{{modalMessage}}</p>
+						    <br>
+						    <input class="form-control text-center" type="text" ng-model="novoMotivo" id="inputMotivo" style="display: none"/>
+						    <br>
+						    <button class="btn btn-danger btnModal" ng-click="closeModal()">
+						    	<i class="glyphicon glyphicon-remove"></i>
+						    </button>
+						    <button class="btn btn-success btnModal" ng-click="confirmOperation()">
+						    	<i class="glyphicon glyphicon-ok"></i>
+						    </button>
+					  	</div>
+				  	<!-- -->
+				</div>
+			<!-- -->
+
+			<!--footer-->
+				<footer class="text-center">
+		        	<div class="footer-above">
+		        		<br><br>
+						<div class="row">
+							<div class="container-fluid" id="footer">
+								<div class="footer-col col-xs-12 col-md-6">
+			                        <h3><b>LOCALIZAÇÃO</b></h3>
+			                        <p>AKN CORPORATION GROUP</p>
+			                        <p>Lorem ipsum dolor, sit amet - nº 0000</p>
+			                        <p>Nulla dapibus lectus mauris</p>
+								</div>
+
+								<div class="footer-col col-xs-12 col-md-6">
+			                        <h3 id="mediaH3"><b>MÍDIAS SOCIAIS</b></h3>
+			                        <a target="_blank" href="#"><img id="fbLogo" src="https://www.seeklogo.net/wp-content/uploads/2016/09/facebook-icon-preview.png" width="100" height="100"></a>
+			                        <a target="_blank" href="#"><img id="twitterLogo" src="http://cgda.nic.in/img/tw.png" width="75" height="75"></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</footer>
+			<!-- -->
+
+		</div>
+	</body>
+</html>

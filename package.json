@@ -1,0 +1,13 @@
+{
+  "name": "aktieNowProject",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-input-masks": "^2.5.0",
+    "body-parser": "^1.14.1",
+    "bootstrap": "^3.3.5",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.3",
+    "validator": "^6.2.1"
+  }
+}
